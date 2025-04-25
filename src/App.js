@@ -1,17 +1,38 @@
 import "./App.css";
-import { Route } from "react-router-dom";
-import Home from "./component/Home";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Home from "./components/Home";
 import Products from "./components/Products";
+import Header from "./components/layout/Header";
+import ProductDetails from "./components/ProductsDetail";
+import Login from "./components/Login";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
     <div>
-      <Route path="/home">
-        <Home />
-      </Route>
-      <Route path="/products">
-        <Products />
-      </Route>
+      <Header />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/home" exact>
+            <Home />
+          </Route>
+          <Route path="/products" exact>
+            <Products />
+          </Route>
+          <Route path="/products/:id">
+            <ProductDetails />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 };
