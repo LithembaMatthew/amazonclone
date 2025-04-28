@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div classname="not_found">
+    <div className="not_found">
       <Link to="/">
         <div>
           <img
