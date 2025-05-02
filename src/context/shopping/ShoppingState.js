@@ -1,5 +1,5 @@
 import {useReducer} from "react";
-import shoppingContext from "./shoppingContext";
+import ShoppingContext from "./shoppingContext";
 import {shoppingReducer} from "./shoppingReducer";
 
 export const ShoppingState = (props) => {
