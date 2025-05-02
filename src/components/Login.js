@@ -37,7 +37,7 @@ const Login = () => {
     return () => {
   console.log("CLEANUP HERE");
   clearTimeout(identifier);
-};
+    };
 }, [email, password]);
 
 const emailChangeHandler = (e) => {
