@@ -7,10 +7,12 @@ import ProductDetails from "./components/ProductsDetail";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 
+
 const App = () => {
+
   return (
     <>
-      <Header />
+    <Header />
       <main>
         <Switch>
           <Route path="/" exact>
@@ -26,7 +28,7 @@ const App = () => {
             <ProductDetails />
           </Route>
           <Route path="/login">
-            <Login />
+          <Login/>
           </Route>
           <Route path="*">
             <NotFound />
@@ -41,3 +43,4 @@ export default App;
 
 // ourdomain.com/ => home screen or home component
 // ourdomain.com/products => product list component
+// Checkout (isLogin) > Payment (isLogin) > PaidOrder (isLogin)
