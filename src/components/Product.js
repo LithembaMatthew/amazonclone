@@ -1,32 +1,41 @@
-import React, { useContext } from 'react'
-import './Product.css'
-import ShoppingContext from '../context/shopping/shoppingContext'
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import "./Product.css";
+import ShoppingContext from "../context/shopping/shoppingContext";
 
-const Product = ({id, image, title, rating, price}) => {
+const Product = ({ id, image, title, rating, price }) => {
   const shoppingContext = useContext(ShoppingContext);
   const { addToBasket } = shoppingContext;
 
-  const addToBasketHandler = () => {} 
-  addToBasket({ item: { id, image, title, rating, price }});
+  const addToBasketHandler = () => {
+    addToBasket({ item: { id, image, title, rating, price } });
+  };
+  Product.propTypes = {
+    id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+  };
 
-
-return (
+  return (
     <div className="product">
- <img src={image} alt="" />
-        <div className="product_info">
-            <p>
-          {title}
-            </p>
-            <div className='product_rating'>
-                {Array (rating).fill().map((_, i) => (<p>:star:</p>))}
-              
-            </div>
-            <p className="product_price">{price}</p> 
-      </div>
-      <button className="product_button" onClick={addToBasketHandler}
-      >Add to Basket</button>
-    </div>
-  )
-}
+      <img src={image} alt="" />
+      <div className="product_info">
+        <p>{title}</p>
+        <div className="product_rating">
+          {[...Array(Number(rating) > 0 ? Math.floor(rating) : 0)].map((i) => (
+            <p key={i}>⭐</p>
+          ))}
+        </div>
 
-export default Product
+        <p className="product_price">{price}</p>
+      </div>
+      <button className="product_button" onClick={addToBasketHandler}>
+        Add to Basket
+      </button>
+    </div>
+  );
+};
+
+export default Product;
