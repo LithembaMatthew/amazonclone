@@ -17,6 +17,17 @@ const addToBasket = async (item) => {
 });
 };
 
+const removeFromBasket = (item) => {
+    dispatch({ type: "REMOVE_FROM_BASKET", payload: item});
+}
+
+const setUser = (user) => {
+    console.log("User payload", user);
+    dispatch({
+     type: "SET_USER",
+     payload: user,
+});
+};
 return (
  <ShoppingContext.Provider
  value={{
@@ -24,6 +35,8 @@ return (
      user: state.user,
      getBasketTotal,
       addToBasket,
+      setUser,
+      removeFromBasket,
  }}
  >
     {props.children}
