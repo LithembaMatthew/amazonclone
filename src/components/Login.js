@@ -18,28 +18,23 @@ const Login = () => {
     .then((auth => {
       history.push("/");
     })
-    .catch((error => alert(error.message));
+    .catch((error) => alert(error.message)),
 
 
-  };
+  );
 
 const register = e => {
   e.preventDefault();
-  auth.createUserWithEmailAndPassword(email,passowrd).then((auth) =>
-}
- {
+  auth.createUserWithEmailAndPassword(email,password).then((auth) => {
+
   if(auth) {   
     history.push("/");
 }
 }) 
+
 .catch((error => alert (error.message));
 };
-  // const signOut = () => {
-  //   setIsLoggedIn(false);
-  //   localStorage.removeItem("isLoggedIn");
-
-  // };
-
+  
   return (
     <div className="login">   
       <Link to="/">

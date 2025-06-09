@@ -2,7 +2,7 @@ import "./App.css";
 import { useContext, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import {Elements} from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import Header from "./components/layout/Header";
@@ -12,12 +12,11 @@ import NotFound from "./components/NotFound";
 import { auth } from "./firebase";
 import ShoppingContext from "./context/shopping/shoppingContext";
 import Checkout from "./components/Checkout";
-import Checkout from "./components/Payment";
-
+import Payment from "./components/Payment";
 
 const promise = loadStripe(
   "pk_test_51RQw6GIgBbo8nC2lj8afy1gKSEiB37PihFhxv8snIbUT8LUE8qb8qoXgRRIHMBqpU0h77wnMX2dxMcMOnmZ4C6wY003jjlAbDC"
-)
+);
 
 const App = () => {
   const shoppingContext = useContext(ShoppingContext);
@@ -27,9 +26,9 @@ const App = () => {
       console.log("User is -> ", authUser);
 
       if (authUser) {
-        setUser({authUser});
+        setUser({ authUser });
       } else {
-        setUser({null});
+        setUser(null);
       }
     });
   }, []);
@@ -53,16 +52,17 @@ const App = () => {
           </Route>
           <Route path="/checkout">
             <Checkout />
-          <Route path="/payment">
-          <Elements stripe={promise}>
-            <Payment />
-            </Elements> 
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="*">
-            <NotFound />
+            <Route path="/payment">
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Route>
         </Switch>
       </main>

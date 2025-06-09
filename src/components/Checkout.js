@@ -1,6 +1,6 @@
 import 'Checkout.css'
 import React, {useContext} from 'react'
-import ShoppingContext from " ../context/shopping/ShoppingContext" 
+import ShoppingContext from " ../context/shopping/ShoppingContext"
 import CheckoutProduct from './CheckoutProduct'
 import Subtotal from './Subtotal'
 
@@ -26,15 +26,14 @@ const Checkout = () => {
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
-             /> 
-          ))}
-     </div>
-     </div>
-     </div>
+               /> 
+    </div>
+);
+     
 
-<div 
- className="checkout_right"><Subtotal /> </div>
+<div className="checkout_right"> <Subtotal /> 
 </div>
+
   );
 };
 
