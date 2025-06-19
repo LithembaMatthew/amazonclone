@@ -10,7 +10,7 @@ import ProductDetails from "./components/ProductsDetail";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import { auth } from "./firebase";
-import ShoppingContext from "./context/shopping/shoppingContext";
+import ShoppingContext from "./context/shopping/ShoppingContext";
 import Checkout from "./components/Checkout";
 import Payment from "./components/Payment";
 

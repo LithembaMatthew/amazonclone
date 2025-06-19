@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import ShoppingContext from "../../context/shopping/shoppingContext";
+import ShoppingContext from "../../context/shopping/ShoppingContext";
 import "./Header.css";
 import { auth } from "../../firebase";
 
@@ -38,7 +38,6 @@ const Header = () => {
             <span className="header_optionOne">
               Hello {!user ? "Guest" : user.email}
             </span>
-
             <span className="header_optionTwo">
               {user ? "Sign Out" : "Sign In"}
             </span>
@@ -49,19 +48,20 @@ const Header = () => {
           <span className="header_optionOne">Returns</span>
           <span className="header_optionTwo">& Orders</span>
         </div>
-        <Link to="/checkout">
-          <div className="header_optionBasket">
+
         <div className="header_option">
           <span className="header_optionOne">Your</span>
           <span className="header_optionTwo">Prime</span>
         </div>
- 
-        <div className="header_optionBasket">
-          <ShoppingBasketIcon />
-          <span className="header_optionTwo header_basketCount">
-            {basket?.length}
-          </span>
-        </div>
+
+        <Link to="/checkout">
+          <div className="header_optionBasket">
+            <ShoppingBasketIcon />
+            <span className="header_optionTwo header_basketCount">
+              {basket?.length}
+            </span>
+          </div>
+        </Link>
       </div>
     </header>
   );

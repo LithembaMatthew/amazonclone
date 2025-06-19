@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import "./Product.css";
-import ShoppingContext from "../context/shopping/shoppingContext";
+import ShoppingContext from "../context/shopping/ShoppingContext";
 
 const Product = ({ id, image, title, rating, price }) => {
   const shoppingContext = useContext(ShoppingContext);
@@ -29,7 +29,10 @@ const Product = ({ id, image, title, rating, price }) => {
           ))}
         </div>
 
-        <p className="product_price"><small>$</small><strong>{price}</strong></p>
+        <p className="product_price">
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
       </div>
       <button className="product_button" onClick={addToBasketHandler}>
         Add to Basket

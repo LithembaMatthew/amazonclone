@@ -1,36 +1,39 @@
-import React, {useContext} from 'react'
-import ShoppingContext from "../context/shopping/shoppingContext";
+import React, { useContext } from "react";
+import ShoppingContext from "../context/shopping/ShoppingContext";
 
-const CheckoutProduct = ({id, image, title, rating, price, hideButton}) => {
-     const shoppingContext = useContext(ShoppingContext);
-      const { reomveFromBasket } = shoppingContext;
-    
-  
+const CheckoutProduct = ({ id, image, title, rating, price, hideButton }) => {
+  const shoppingContext = useContext(ShoppingContext);
+  const { removeFromBasket } = shoppingContext; // Fixed typo here
+
   const removeFromBasketHandler = () => {
-      removeFromBasket({id: id})
+    removeFromBasket({ id: id });
   };
-    return (
+
+  return (
     <div className="checkout_product">
-      <img className="checkout_product_image"src={image} alt="" />
+      <img className="checkout_product_image" src={image} alt="" />
       <div className="checkout_product_info">
-        <p className="checkout_product">{title}</p>
+        <p className="checkout_product_title">{title}</p>
+
         <div className="checkout_product_rating">
-          {[...Array(Number(rating) > 0 ? Math.floor(rating) : 0)].map((i) => (
-            <p key={i}>⭐</p>
-          ))}
+          {[...Array(Number(rating) > 0 ? Math.floor(rating) : 0)].map(
+            (_, i) => (
+              <p key={i}>⭐</p>
+            )
+          )}
         </div>
 
         <p className="checkout_product_price">
-            <small>$</small>
-            <strong>{price}</strong>
-           </p>
-            <!hideButton && (
-        <button onClick={removeFromBasketHandler}
-        >Remove From Basket</button>
-      </div>
-     
-</div>
-  )
-}
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
 
-export default CheckoutProduct
+        {!hideButton && (
+          <button onClick={removeFromBasketHandler}>Remove From Basket</button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default CheckoutProduct;
