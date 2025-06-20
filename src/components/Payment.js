@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import axios from "../axios";
 import { Link, useHistory } from "react-router-dom";
-import ShoppingContext from " ../context/shopping/ShoppingContext";
+import ShoppingContext from "../context/shopping/ShoppingContext";
 import CheckoutProduct from "./CheckoutProduct";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./Payment.css";
 import {db} from "../firebase";
 
 const Payment = () => {
-  const shoppingContext = useContext(ShoppingContext);
-  const { basket, user, getBasketTotal } = shoppingContext;
+  const ShoppingContext = useContext(ShoppingContext);
+  const { basket, user, getBasketTotal } = ShoppingContext;
 
   const history = useHistory();
 
